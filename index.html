@@ -17,6 +17,13 @@
             background-color: #f9f6f2;
             color: #333;
             line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
         
         /* Header Styles */
@@ -36,6 +43,7 @@
             align-items: center;
             max-width: 1200px;
             margin: 0 auto;
+            flex-wrap: wrap;
         }
         
         .logo {
@@ -43,15 +51,18 @@
             font-weight: bold;
             font-style: italic;
             box-shadow: 0 0 10px hotpink;
+            margin-bottom: 0.5rem;
         }
         
         nav ul {
             display: flex;
             list-style: none;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         
         nav ul li {
-            margin-left: 1.5rem;
+            margin: 0.5rem;
         }
         
         nav ul li a {
@@ -59,6 +70,8 @@
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
+            padding: 0.3rem 0;
+            display: block;
         }
         
         nav ul li a:hover {
@@ -68,13 +81,14 @@
         /* Hero Section */
         .hero {
             background: linear-gradient(to right, blue, blueviolet, lightblue);
-            height: 85vh;
+            min-height: 85vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
             position: relative;
+            padding: 2rem;
         }
         
         .hero::before {
@@ -91,17 +105,17 @@
             position: relative;
             z-index: 1;
             max-width: 800px;
-            padding: 2rem;
+            padding: 1rem;
         }
         
         .hero h1 {
-            font-size: 3rem;
+            font-size: clamp(2rem, 5vw, 3rem);
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
         
         .hero p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2vw, 1.2rem);
             margin-bottom: 2rem;
         }
         
@@ -114,6 +128,7 @@
             text-decoration: none;
             font-weight: bold;
             transition: all 0.3s ease;
+            font-size: clamp(0.9rem, 2vw, 1rem);
         }
         
         .btn:hover {
@@ -125,22 +140,24 @@
         
         /* Categories Section */
         .categories {
-            padding: 4rem 2rem;
+            padding: 3rem 1rem;
             max-width: 1200px;
             margin: 0 auto;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
-            font-size: 2rem;
+            margin-bottom: 2rem;
+            font-size: clamp(1.5rem, 3vw, 2rem);
             color: #6e48aa;
+            padding: 0 1rem;
         }
         
         .category-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            gap: 1.5rem;
+            padding: 0 1rem;
         }
         
         .category-card {
@@ -162,27 +179,39 @@
             align-items: center;
             justify-content: center;
             color: #666;
-            object-fit: cover;
             overflow: hidden;
         }
-        .category-img img{
-        	object-fit: contain;
-        	overflow: hidden;
+        
+        .category-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .category-card:hover .category-img img {
+            transform: scale(1.05);
         }
         
         .category-info {
-            padding: 1.5rem;
+            padding: 1.2rem;
             text-align: center;
         }
         
         .category-info h3 {
             margin-bottom: 0.5rem;
             color: #333;
+            font-size: 1.2rem;
+        }
+        
+        .category-info p {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
         }
         
         /* Featured Products */
         .featured {
-            padding: 4rem 2rem;
+            padding: 3rem 1rem;
             background: white;
         }
         
@@ -194,7 +223,8 @@
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 2rem;
+            gap: 1.5rem;
+            padding: 0 1rem;
         }
         
         .product-card {
@@ -217,31 +247,45 @@
             align-items: center;
             justify-content: center;
             color: #666;
+            overflow: hidden;
         }
-        .product-img img{
-        	object-fit: cover;
-        	overflow: hidden;
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
         }
         
         .product-info {
-            padding: 1.5rem;
+            padding: 1.2rem;
         }
         
         .product-info h3 {
             margin-bottom: 0.5rem;
             color: #333;
+            font-size: 1.1rem;
+        }
+        
+        .product-info p {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
         }
         
         .price {
             font-weight: bold;
             color: #6e48aa;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin: 0.5rem 0;
         }
         
         /* Testimonials */
         .testimonials {
-            padding: 4rem 2rem;
+            padding: 3rem 1rem;
             background: #f0e6ff;
             text-align: center;
         }
@@ -249,19 +293,21 @@
         .testimonial-container {
             max-width: 800px;
             margin: 0 auto;
+            padding: 0 1rem;
         }
         
         .testimonial {
             background: white;
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
         
         .testimonial-text {
             font-style: italic;
             margin-bottom: 1rem;
+            font-size: 1rem;
         }
         
         .testimonial-author {
@@ -271,7 +317,7 @@
         
         /* Newsletter */
         .newsletter {
-            padding: 4rem 2rem;
+            padding: 3rem 1rem;
             background: #6e48aa;
             color: white;
             text-align: center;
@@ -280,42 +326,51 @@
         .newsletter-container {
             max-width: 600px;
             margin: 0 auto;
+            padding: 0 1rem;
         }
         
         .newsletter h2 {
             margin-bottom: 1rem;
+            font-size: 1.5rem;
         }
         
         .newsletter p {
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             opacity: 0.9;
+            font-size: 1rem;
         }
         
         .newsletter-form {
             display: flex;
             max-width: 500px;
             margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         
         .newsletter-form input {
-            flex: 1;
+            flex: 1 1 300px;
             padding: 0.8rem 1rem;
             border: none;
             outline: none;
-            border-radius: 30px 0 0 30px;
+            border-radius: 30px;
             font-size: 1rem;
             box-shadow: 0 0 8px cyan;
+            margin-bottom: 0.5rem;
+            min-width: 0;
         }
         
         .newsletter-form button {
             background: #ffd700;
             color: #333;
             border: none;
-            padding: 0 1.5rem;
-            border-radius: 0 30px 30px 0;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
+            font-size: 1rem;
+            margin-left: 0;
         }
         
         .newsletter-form button:hover {
@@ -326,7 +381,7 @@
         footer {
             background: #333;
             color: white;
-            padding: 3rem 2rem 1rem;
+            padding: 2rem 1rem 1rem;
         }
         
         .footer-container {
@@ -334,13 +389,18 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+            gap: 1.5rem;
+            padding: 0 1rem;
         }
         
         .footer-col h3 {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             font-size: 1.2rem;
             color: #ffd700;
+        }
+        
+        .footer-col p, .footer-col ul li {
+            font-size: 0.9rem;
         }
         
         .footer-col ul {
@@ -348,13 +408,14 @@
         }
         
         .footer-col ul li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.5rem;
         }
         
         .footer-col ul li a {
             color: #ddd;
             text-decoration: none;
             transition: all 0.3s ease;
+            display: inline-block;
         }
         
         .footer-col ul li a:hover {
@@ -364,19 +425,21 @@
         
         .social-links {
             display: flex;
-            gap: 1rem;
+            gap: 0.8rem;
+            margin-top: 1rem;
         }
         
         .social-links a {
             color: white;
             background: #444;
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
+            font-size: 0.9rem;
         }
         
         .social-links a:hover {
@@ -386,40 +449,42 @@
         
         .copyright {
             text-align: center;
-            margin-top: 3rem;
+            margin-top: 2rem;
             padding-top: 1rem;
             border-top: 1px solid #444;
             color: #aaa;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
         
         /* Responsive Adjustments */
-        @media (max-width: 768px) {
+        @media (max-width: 600px) {
             .header-container {
                 flex-direction: column;
                 text-align: center;
             }
             
             nav ul {
-                margin-top: 1rem;
+                margin-top: 0.5rem;
             }
             
-            .hero h1 {
-                font-size: 2.2rem;
+            .hero {
+                min-height: 70vh;
             }
             
-            .newsletter-form {
-                flex-direction: column;
+            .category-grid, .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            }
+            
+            .category-img, .product-img {
+                height: 160px;
             }
             
             .newsletter-form input {
-                border-radius: 30px;
-                margin-bottom: 0.5rem;
+                flex: 1 1 100%;
             }
             
             .newsletter-form button {
-                border-radius: 30px;
-                padding: 0.8rem;
+                width: 100%;
             }
         }
     </style>
@@ -455,7 +520,7 @@
         <h2 class="section-title">Our Collections</h2>
         <div class="category-grid">
             <div class="category-card">
-                <div class="category-img"><img src="duvet1.jpg"></div>
+                <div class="category-img"><img src="duvet1.jpg" alt="Luxury Duvets"></div>
                 <div class="category-info">
                     <h3>Luxury Duvets</h3>
                     <p>Soft, cozy bedding for your perfect sleep</p>
@@ -464,7 +529,7 @@
             </div>
             
             <div class="category-card">
-                <div class="category-img"><img src="shoe.jpg"></div>
+                <div class="category-img"><img src="shoe.jpg" alt="Elegant Shoes"></div>
                 <div class="category-info">
                     <h3>Elegant Shoes</h3>
                     <p>Stylish footwear for every occasion</p>
@@ -473,7 +538,7 @@
             </div>
             
             <div class="category-card">
-                <div class="category-img"><img src="handbag.jpg"></div>
+                <div class="category-img"><img src="handbag.jpg" alt="Designer Bags"></div>
                 <div class="category-info">
                     <h3>Designer Bags</h3>
                     <p>Trendy bags to complement your style</p>
@@ -482,7 +547,7 @@
             </div>
             
             <div class="category-card">
-                <div class="category-img"><img src="home-decor.jpg"></div>
+                <div class="category-img"><img src="home-decor.jpg" alt="Home Decor"></div>
                 <div class="category-info">
                     <h3>Home Decor</h3>
                     <p>Carpets & curtains to beautify your space</p>
@@ -498,7 +563,7 @@
             <h2 class="section-title">Featured Products</h2>
             <div class="product-grid">
                 <div class="product-card">
-                    <div class="product-img"><img src="duvet.jpg"></div>
+                    <div class="product-img"><img src="duvet.jpg" alt="Silk Comfort Duvet"></div>
                     <div class="product-info">
                         <h3>Silk Comfort Duvet</h3>
                         <p>Ultra-soft all-season duvet</p>
@@ -508,7 +573,7 @@
                 </div>
                 
                 <div class="product-card">
-                    <div class="product-img"><img src="shoe.jpg"></div>
+                    <div class="product-img"><img src="shoe.jpg" alt="Evening Elegance Heels"></div>
                     <div class="product-info">
                         <h3>Evening Elegance Heels</h3>
                         <p>Perfect for special occasions</p>
@@ -518,7 +583,7 @@
                 </div>
                 
                 <div class="product-card">
-                    <div class="product-img"><img src="bag.jpg"></div>
+                    <div class="product-img"><img src="bag.jpg" alt="Designer Tote Bag"></div>
                     <div class="product-info">
                         <h3>Designer Tote Bag</h3>
                         <p>Spacious and stylish</p>
@@ -528,7 +593,7 @@
                 </div>
                 
                 <div class="product-card">
-                    <div class="product-img"><img src="curtain.jpg"></div>
+                    <div class="product-img"><img src="curtain.jpg" alt="Velvet Blackout Curtains"></div>
                     <div class="product-info">
                         <h3>Velvet Blackout Curtains</h3>
                         <p>Luxury with light control</p>
@@ -574,9 +639,9 @@
                 <h3>Annitaray Sells</h3>
                 <p>Premium home & fashion products at affordable prices. Quality you can trust.</p>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f">f</i></a>
-                    <a href="#"><i class="fab fa-instagram">i</i></a>
-                    <a href="#"><i class="fab fa-whatsapp">w</i></a>
+                    <a href="#" aria-label="Facebook">f</a>
+                    <a href="#" aria-label="Instagram">i</a>
+                    <a href="#" aria-label="WhatsApp">w</a>
                 </div>
             </div>
             
@@ -608,13 +673,3 @@
                     <li><a href="#">Store Location</a></li>
                     <li><a href="#">+123 456 7890</a></li>
                     <li><a href="#">info@annitaraysells.com</a></li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="copyright">
-            &copy; 2023 Annitaray Sells. All rights reserved.
-        </div>
-    </footer>
-</body>
-</html>
