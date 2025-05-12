@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annitaray Sells - Premium Home & Fashion</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f6f2;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            font-style: italic;
+            box-shadow: 0 0 10px hotpink;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to right, blue, blueviolet, lightblue);
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #ffd700;
+            color: #333;
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #6e48aa;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* Categories Section */
+        .categories {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            color: #6e48aa;
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .category-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .category-img {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            object-fit: cover;
+            overflow: hidden;
+        }
+        .category-img img{
+        	object-fit: contain;
+        	overflow: hidden;
+        }
+        
+        .category-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .category-info h3 {
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        /* Featured Products */
+        .featured {
+            padding: 4rem 2rem;
+            background: white;
+        }
+        
+        .featured-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background: #f9f6f2;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .product-img {
+            height: 220px;
+            background: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+        .product-img img{
+        	object-fit: cover;
+        	overflow: hidden;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-info h3 {
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .price {
+            font-weight: bold;
+            color: #6e48aa;
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 4rem 2rem;
+            background: #f0e6ff;
+            text-align: center;
+        }
+        
+        .testimonial-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: #6e48aa;
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            padding: 4rem 2rem;
+            background: #6e48aa;
+            color: white;
+            text-align: center;
+        }
+        
+        .newsletter-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .newsletter h2 {
+            margin-bottom: 1rem;
+        }
+        
+        .newsletter p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: none;
+            outline: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 1rem;
+            box-shadow: 0 0 8px cyan;
+        }
+        
+        .newsletter-form button {
+            background: #ffd700;
+            color: #333;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 30px 30px 0;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-form button:hover {
+            background: #f0c000;
+        }
+        
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-col h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            color: #ffd700;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-col ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-col ul li a:hover {
+            color: #ffd700;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            background: #444;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: #6e48aa;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                border-radius: 30px;
+                margin-bottom: 0.5rem;
+            }
+            
+            .newsletter-form button {
+                border-radius: 30px;
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">Annitaray Sells</div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Luxury Home & Fashion Finds</h1>
+            <p>Discover premium quality duvets, shoes, bags, carpets and curtains at affordable prices at <strong>Annitaray Sells</strong></p>
+            <a href="#" class="btn">Shop Now</a>
+        </div>
+    </section>
+    
+    <!-- Categories Section -->
+    <section class="categories">
+        <h2 class="section-title">Our Collections</h2>
+        <div class="category-grid">
+            <div class="category-card">
+                <div class="category-img"><img src="duvet1.jpg"></div>
+                <div class="category-info">
+                    <h3>Luxury Duvets</h3>
+                    <p>Soft, cozy bedding for your perfect sleep</p>
+                    <a href="#" class="btn">View Collection</a>
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-img"><img src="shoe.jpg"></div>
+                <div class="category-info">
+                    <h3>Elegant Shoes</h3>
+                    <p>Stylish footwear for every occasion</p>
+                    <a href="#" class="btn">View Collection</a>
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-img"><img src="handbag.jpg"></div>
+                <div class="category-info">
+                    <h3>Designer Bags</h3>
+                    <p>Trendy bags to complement your style</p>
+                    <a href="#" class="btn">View Collection</a>
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-img"><img src="home-decor.jpg"></div>
+                <div class="category-info">
+                    <h3>Home Decor</h3>
+                    <p>Carpets & curtains to beautify your space</p>
+                    <a href="#" class="btn">View Collection</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured Products -->
+    <section class="featured">
+        <div class="featured-container">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img"><img src="duvet.jpg"></div>
+                    <div class="product-info">
+                        <h3>Silk Comfort Duvet</h3>
+                        <p>Ultra-soft all-season duvet</p>
+                        <div class="price">$89.99</div>
+                        <a href="#" class="btn">Add to Cart</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img"><img src="shoe.jpg"></div>
+                    <div class="product-info">
+                        <h3>Evening Elegance Heels</h3>
+                        <p>Perfect for special occasions</p>
+                        <div class="price">$49.99</div>
+                        <a href="#" class="btn">Add to Cart</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img"><img src="bag.jpg"></div>
+                    <div class="product-info">
+                        <h3>Designer Tote Bag</h3>
+                        <p>Spacious and stylish</p>
+                        <div class="price">$59.99</div>
+                        <a href="#" class="btn">Add to Cart</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img"><img src="curtain.jpg"></div>
+                    <div class="product-info">
+                        <h3>Velvet Blackout Curtains</h3>
+                        <p>Luxury with light control</p>
+                        <div class="price">$69.99</div>
+                        <a href="#" class="btn">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="testimonial-container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="testimonial">
+                <p class="testimonial-text">"The duvet I purchased from Annitaray Sells is the most comfortable I've ever owned. Worth every penny!"</p>
+                <p class="testimonial-author">- Sarah M.</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-text">"Beautiful shoes that are actually comfortable! I get compliments every time I wear them."</p>
+                <p class="testimonial-author">- Jessica K.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="newsletter-container">
+            <h2>Join Our Newsletter</h2>
+            <p>Subscribe to get updates on new arrivals, special offers and styling tips.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Send email to Annitaray...">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Annitaray Sells</h3>
+                <p>Premium home & fashion products at affordable prices. Quality you can trust.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f">f</i></a>
+                    <a href="#"><i class="fab fa-instagram">i</i></a>
+                    <a href="#"><i class="fab fa-whatsapp">w</i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Shop</h3>
+                <ul>
+                    <li><a href="#">Duvets</a></li>
+                    <li><a href="#">Ladies Shoes</a></li>
+                    <li><a href="#">Bags</a></li>
+                    <li><a href="#">Carpets</a></li>
+                    <li><a href="#">Curtains</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Help</h3>
+                <ul>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="#">Track Order</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Store Location</a></li>
+                    <li><a href="#">+123 456 7890</a></li>
+                    <li><a href="#">info@annitaraysells.com</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2023 Annitaray Sells. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>
